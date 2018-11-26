@@ -1,0 +1,87 @@
+//
+//  YPapi.pch
+//  YiPeiWang
+//
+//  Created by 张张寿华 on 2018/7/23.
+//  Copyright © 2018年 张张寿华. All rights reserved.
+//
+
+#ifndef YPapi_pch
+#define YPapi_pch
+/************** 通用工具 *************/
+#import "CustomTools.h"
+//屏幕尺寸
+#define KScreenWidth [UIScreen mainScreen].bounds.size.width
+#define KScreenHeight [UIScreen mainScreen].bounds.size.height
+#define KWidth   frame.size.width
+#define KHeight  frame.size.height
+#define KScal    [[UIScreen mainScreen] bounds].size.height/667
+//不同屏幕尺寸字体适配（320，568是因为效果图为IPHONE5 如果不是则根据实际情况修改）
+#define kScreenWidthRatio  (Main_Screen_Width / 320.0)
+#define kScreenHeightRatio (Main_Screen_Height / 568.0)
+#define AdaptedWidth(x)  ceilf((x) * kScreenWidthRatio)
+#define AdaptedHeight(x) ceilf((x) * kScreenHeightRatio)
+#define AdaptedFontSize(R)     CHINESE_SYSTEM(AdaptedWidth(R))
+
+//常用代码段
+#define  NetworkSuc  [[NSString stringWithFormat:@"%@",responObject[@"code"] ] isEqualToString:@"0000"]
+#define IS_IPHONE_5 (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double )568) < DBL_EPSILON )
+#define IS_IPHONE_6 (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double )667) < DBL_EPSILON )
+#define IS_IPHONE_6_PLUS (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double )736) < DBL_EPSILON )
+#define isIOS10                  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10 ? YES :NO)
+#define IsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+//获取图片资源
+#define GetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+//#define IsiPhoneXMore ( )
+//
+//
+//-(BOOL)isPhoneX {
+//    BOOL iPhoneX = NO;
+//    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {//判断是否是手机
+//        return iPhoneX;
+//    }
+//    if (@available(iOS 11.0, *)) {
+//        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+//        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+//            iPhoneX = YES;
+//        }
+//    }
+//    return iPhoneX;
+//}
+
+
+
+
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+#else
+#define NSLog(...)
+#endif
+
+
+//颜色
+#define RGB(r, g, b)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1.0]
+#define RGBA(r, g, b,a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
+#define  kAllUIColor           [UIColor colorWithRed:(4)/255.0f green:(133)/255.0f blue:(153)/255.0f alpha:1.0]
+#define   KTitleUIColor  [UIColor colorWithRed:(51)/255.0f green:(51)/255.0f blue:(51)/255.0f alpha:1.0]
+#define   KSubTitleColor  [UIColor colorWithRed:(102)/255.0f green:(102)/255.0f blue:(102)/255.0f alpha:1.0]
+#define   KLineColor  [UIColor colorWithRed:(214)/255.0f green:(214)/255.0f blue:(214)/255.0f alpha:1.0]
+#define   KBackGroundColor  [UIColor colorWithRed:(238)/255.0f green:(238)/255.0f blue:(238)/255.0f alpha:1.0]
+#define H15 [UIFont fontWithName:@"PingFang-SC-Regular" size:15]
+#define H14 [UIFont fontWithName:@"PingFang-SC-Regular" size:14]
+#define H13 [UIFont fontWithName:@"PingFang-SC-Regular" size:13]
+#define H12 [UIFont fontWithName:@"PingFang-SC-Regular" size:12]
+#define H20 [UIFont fontWithName:@"PingFang-SC-Regular" size:20]
+/************** 相关控制器 *************/
+
+/************** 接口地址 *************/
+#define   KBaseUrl    @"http://www.wisdommedical.cn:8080/api/"
+
+
+
+//
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* YPapi_pch */
